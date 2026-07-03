@@ -1,6 +1,8 @@
 # superpowers-game-extension
 
-`superpowers-game-extension`은 `Superpowers`에 게임 개발 맥락을 더하는 repo-local extension입니다.
+`superpowers-game-extension`은 [`Superpowers`](https://github.com/obra/superpowers)에 게임 개발 맥락을 더하는 repo-local extension입니다.
+
+`Superpowers`는 AI coding agent가 brainstorming, planning, TDD, code review, verification 같은 개발 절차를 composable skills로 따르도록 돕는 workflow입니다. 이 extension은 그 workflow 위에 Unity/Unreal 프로젝트에서 필요한 engine/editor 확인, 안전 규칙, 게임 문서화 규칙을 추가합니다.
 
 이 저장소는 전역 `obra/superpowers` workflow를 바꾸지 않습니다. 대신 Unity/Unreal 게임 프로젝트 안에 `AGENTS.md`, `.agents/skills`, `docs/game` 템플릿을 설치해서 AI agent가 일반적인 `Superpowers` 흐름 안에서 게임 개발용 문서화, 엔진 확인, 검증 절차를 함께 따르도록 합니다.
 
@@ -78,7 +80,7 @@ template/
 |---|---|
 | `AGENTS.md` | 게임 프로젝트임을 식별하고, Superpowers 단계별로 필요한 local game skill을 선택하도록 안내합니다. |
 | `.agents/skills/` | Unity/Unreal, scene/UI, asset, performance, save data, input/camera, AI, networking, localization/accessibility 작업용 local skills입니다. |
-| `docs/game/` | 게임 설계, 시스템, scene, UI flow, asset policy, architecture, save model, QA, performance, release 정보를 담는 living docs 템플릿입니다. |
+| `docs/game/` | 작은 프로젝트도 유지할 수 있는 6개 핵심 문서와 2개 로그 중심의 living docs 템플릿입니다. 대규모 프로젝트는 split criteria에 따라 하위 문서로 확장합니다. |
 
 AI 설치 절차는 비파괴가 기본입니다. 대상 프로젝트에 같은 경로의 `.agents/skills` 또는 `docs/game` 파일이 이미 있으면 덮어쓰지 않고 conflict로 보고해야 합니다. 이 extension repo 루트에는 `.agents/`와 `AGENTS.md`를 만들지 않습니다. 개발 중인 local skill이 현재 Codex 세션에 자동 로드되는 것을 피하기 위한 root safety 제약입니다.
 `INSTALL_FOR_AI.md` 방식에서는 `AGENTS.md`만 append-only로 특별 취급합니다. `.agents/skills`와 `docs/game`는 기존 파일을 덮어쓰지 않고 누락된 파일만 복사하거나 충돌을 보고합니다.
@@ -113,25 +115,20 @@ Unity 프로젝트에서 MCPForUnity를 설치하면 `.codex/skills/unity-mcp-sk
 
 ## Living Docs
 
-`docs/game`은 사람과 AI가 함께 보는 살아 있는 게임 문서입니다. 게임 규칙, UX 흐름, scene 구조, system architecture, engine integration, QA, performance budget, release constraints가 바뀌면 같은 작업에서 관련 문서를 함께 갱신하는 것을 목표로 합니다.
+`docs/game`은 사람과 AI가 함께 보는 compact source of truth입니다. 기본 템플릿은 작은 싱글게임도 유지할 수 있도록 6개 핵심 문서와 2개 로그만 생성합니다. 대규모 멀티플레이, 라이브 서비스, 대량 콘텐츠 프로젝트는 `00-index.md`의 split criteria에 따라 하위 문서로 확장합니다.
 
-기본 문서 맵은 다음과 같습니다.
+기본 문서 맵:
 
-- `00-index.md`: 프로젝트 식별, 문서 맵, 현재 검증 상태
-- `01-vision-and-pillars.md`: 목표 경험, 설계 원칙, 비목표
-- `02-core-loop.md`: core loop, session loop, reward loop
-- `03-player-and-controls.md`: player verbs, input mapping, camera state, accessibility controls
-- `04-gameplay-systems.md`: combat, AI, progression, multiplayer authority, validation path
-- `05-scenes-and-levels.md`: scenes, levels, maps, transitions
-- `06-ui-ux-flow.md`: HUD, menus, modal stack, routing, focus behavior
-- `07-content-and-assets.md`: asset taxonomy, naming, source/generated policy, reference integrity
-- `08-technical-architecture.md`: runtime modules, editor tools, engine integration
-- `09-data-and-save-model.md`: save schema, migrations, compatibility, save/load validation
-- `10-playtest-and-qa.md`: smoke tests, bug reproduction, validation evidence
-- `11-performance-budgets.md`: target platform, frame/memory/loading budgets, measurement results
-- `12-build-release-platforms.md`: build scenes/maps, packaging constraints, pre-release checks
+- `00-index.md`: 프로젝트 식별, docs profile, 문서 맵, 최신 검증 상태
+- `01-product-brief.md`: 한 줄 피치, 목표 경험, pillars, scope/non-goals, target player/platform, risks/open questions
+- `02-gameplay-design.md`: core/session/reward loop, player verbs, controls/camera, gameplay systems, validation path
+- `03-content-and-ux.md`: scenes/levels, UI flow, content/assets, localization/accessibility, reference integrity
+- `04-engine-architecture.md`: runtime modules, editor tools, engine integration, data ownership, save/network summary
+- `05-validation-release.md`: smoke tests, playtest evidence, performance budgets, build/release targets
 - `decision-log.md`: 중요한 결정과 trade-off
-- `change-log.md`: 게임 의미가 있는 변경 사항
+- `change-log.md`: player-facing 또는 spec-level 변경 사항
+
+새 문서는 기본적으로 만들지 않습니다. 섹션이 커지거나, 별도 owner/QA가 있거나, save/network/platform/liveops처럼 실패 비용이 큰 경우에만 `systems/`, `content/`, `ux/`, `architecture/`, `online/`, `validation/`, `platform/`, `decisions/` 아래로 분리합니다.
 
 ## 포함된 game skills
 
@@ -139,20 +136,21 @@ Unity 프로젝트에서 MCPForUnity를 설치하면 `.codex/skills/unity-mcp-sk
 
 | Skill | 적용 대상 |
 |---|---|
-| `game-docs-maintaining` | design, gameplay rules, scenes, UI flow, content, architecture, save data, testing, performance, build targets, project documentation |
-| `game-engine-mcp-operating` | Unreal/Unity MCP 연결, editor tools, engine-owned assets, scene inspection, editor state validation |
+| `game-docs-maintaining` | design, gameplay behavior, content, UI/UX, architecture, save/network data, validation, performance, build targets, release constraints, project documentation |
+| `game-engine-mcp-operating` | Unreal/Unity MCP connections, editor tools, engine-owned assets, scene inspection, editor state validation |
 | `unity-mcp-workflow` | Unity MCP, Unity Editor automation, scenes, GameObjects, prefabs, ScriptableObjects, uGUI, UI Toolkit, Play Mode, Edit Mode tests |
 | `unreal-mcp-workflow` | Unreal MCP, Unreal Editor automation, levels, actors, Blueprints, UMG, CommonUI, materials, PIE, Automation tests |
-| `game-scene-ui-iteration` | levels, scenes, actors, GameObjects, prefabs, widgets, canvases, UIDocuments, menus, HUDs, visual hierarchy |
+| `game-scene-ui-iteration` | levels, scenes, maps, actors, GameObjects, prefabs, world objects, spawn points, lighting, collision, navigation, visual hierarchy |
 | `game-playtesting-and-validation` | gameplay verification, bug reproduction, Unity tests, Unreal Automation tests, smoke tests, editor log checks |
-| `game-ui-implementation` | HUDs, menus, UI Toolkit, uGUI, UMG, CommonUI, navigation, focus, runtime UI binding |
-| `game-asset-pipeline` | import settings, materials, textures, meshes, audio, prefabs, Blueprints, ScriptableObjects, asset naming/folders |
+| `game-ui-implementation` | HUDs, menus, UI screens, modal flow, UI state ownership, runtime UI binding, focus/navigation, input mode, uGUI, UI Toolkit, UMG, CommonUI |
+| `game-asset-pipeline` | asset import settings, materials, textures, meshes, audio, prefabs, Blueprints, ScriptableObjects, naming, folder taxonomy, source/generated policy, reference integrity |
 | `game-performance-budgeting` | FPS, frame time, hitches, memory, draw calls, shader cost, loading time, build size, profiling |
 | `game-save-data-migrations` | save schema, persistence format, progression data, migrations, backward compatibility, save/load tests |
 | `game-input-and-camera-design` | player controls, input mapping, Unity Input System, Unreal Enhanced Input, camera states, aiming, lock-on |
 | `game-ai-behavior-debugging` | Behavior Trees, state machines, NavMesh, pathfinding, perception, blackboards, spawn logic |
 | `game-networking-authority` | multiplayer authority, ownership, replication, prediction, rollback, matchmaking, deterministic tests |
-| `game-content-branching-and-merging` | binary engine assets, asset locks, prefab/Blueprint conflicts, Unreal OFPA, Unity YAML conflicts |
+| `game-content-branching-and-merging` | engine asset conflicts, binary asset locks, Unity YAML conflicts, prefab/Blueprint merge issues, Unreal OFPA changes, generated file churn, content branch strategy |
+| `game-build-release-platforms` | build scenes/maps, packaging, platform targets, CI build scripts, store submission, release checklist, platform-specific configuration, certification constraints |
 | `game-localization-accessibility` | localization keys, translated text, font fallback, subtitles, readability, colorblind support, input accessibility, safe areas |
 
 ## 개발자 참고
