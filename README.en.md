@@ -74,7 +74,7 @@ template/
   docs/game/
 ```
 
-The installer creates these files and directories in the target game project.
+The AI install runbook copies these files and directories into the target game project.
 
 | Path | Purpose |
 |---|---|
@@ -156,5 +156,7 @@ The installed `.agents/skills` cover these game domains.
 ## Developer notes
 
 This extension repository's own root does not contain `.agents/` or `AGENTS.md`. The install payload is always managed under `template/`. This constraint prevents a Codex session developing the extension from auto-loading local skills that are still being validated.
+
+The tracked public surface of this repository is the root docs, MCP setup guides, and `template/`. `/docs`, `/scripts`, `/tests`, and `/pyproject.toml` are treated as local validation and development artifacts and stay in `.gitignore`. The default install flow is not a Python installer script; it is the [INSTALL_FOR_AI.md](INSTALL_FOR_AI.md) runbook that tells an AI coding agent to copy `template/` non-destructively.
 
 Codex plugin packaging is not the default install path yet. The current default path is to have an AI coding agent read `INSTALL_FOR_AI.md` and install repo-local `AGENTS.md`, `.agents/skills`, and `docs/game` into the target game project.
