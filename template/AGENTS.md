@@ -1,5 +1,7 @@
 # AGENTS.md
 
+<!-- superpowers-game-extension: game-project-instructions -->
+
 ## 프로젝트 식별
 
 이 저장소는 게임 프로젝트입니다. Global Superpowers workflow는 그대로 적용합니다. 게임 설계, 엔진 콘텐츠, validation, build/release, `docs/game`에 닿는 작업에서는 관련성이 있는 `.agents/skills` local game skill을 사용합니다.

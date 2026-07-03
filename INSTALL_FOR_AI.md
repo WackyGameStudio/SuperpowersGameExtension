@@ -69,7 +69,7 @@ Rules:
 - If `AGENTS.md` does not exist, copy `template/AGENTS.md` to the target root.
 - If `AGENTS.md` exists but is empty or whitespace-only, replace it with `template/AGENTS.md`.
 - If `AGENTS.md` exists and has content, append the full contents of `template/AGENTS.md` below the existing content.
-- Before appending, check whether the existing file already contains `Superpowers 단계별 game skill routing` or `superpowers-game-extension`. If it does, do not append a duplicate block; report that the instructions appear to be installed already.
+- Before appending, check whether the existing file already contains `<!-- superpowers-game-extension: game-project-instructions -->`, `# superpowers-game-extension`, or `## Game skill routing`. If it does, do not append a duplicate block; report that the instructions appear to be installed already.
 - When appending, insert a clear separator:
 
 ```md
