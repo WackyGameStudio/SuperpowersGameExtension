@@ -1,0 +1,17 @@
+/.dev/
+/.venv/
+/venv/
+/GameSamples/
+**/__pycache__/
+/.pytest_cache/
+/.superpowers/
+/.agents/
+/.codex/
+/.claude/
+/docs/
+/scripts/
+/tests/
+/pyproject.toml
+.env
+.env.*
+*.log
