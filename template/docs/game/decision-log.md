@@ -1,16 +1,13 @@
-# 의사결정 로그
+# Decision Log
 
-## 기록 형식
+Record durable game, technical, content, platform, save, networking, performance, and validation decisions that are costly to reverse or likely to be debated again.
 
-```text
-날짜:
-의사결정:
-검토한 대안:
-이유:
-영향:
-후속 조치:
-```
+## Entries
 
-## 의사결정
+| Date | Decision | Options considered | Reason | Impact | Linked evidence |
+|---|---|---|---|---|---|
+| 아직 기록되지 않음 | 아직 기록되지 않음 | 아직 기록되지 않음 | 아직 기록되지 않음 | 아직 기록되지 않음 | 아직 기록되지 않음 |
 
-아직 기록되지 않았습니다.
+## Recording criteria
+
+Add an entry when a decision changes player-facing behavior, save/network/platform compatibility, performance budget, content production policy, or a trade-off the team is likely to revisit.

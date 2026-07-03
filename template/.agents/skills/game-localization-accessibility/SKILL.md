@@ -13,8 +13,8 @@ Localization과 accessibility는 UI, input, platform release constraints에 걸�
 
 1. Text key, font fallback, text expansion, subtitle, color/readability, safe area, remapping 영향을 확인한다.
 2. UI implementation과 input/camera design의 accessibility 영향을 연결한다.
-3. Platform accessibility requirement는 `docs/game/12-build-release-platforms.md`와 연결한다.
-4. 변경 후 `docs/game/06-ui-ux-flow.md`, `docs/game/03-player-and-controls.md`, `docs/game/12-build-release-platforms.md` 갱신 여부를 판단한다.
+3. Platform accessibility requirement는 `docs/game/03-content-and-ux.md`와 필요 시 `docs/game/05-validation-release.md`와 연결한다.
+4. 변경 후 `docs/game/03-content-and-ux.md`, `docs/game/02-gameplay-design.md`, `docs/game/05-validation-release.md` 갱신 여부를 판단한다.
 
 ## Verification
 

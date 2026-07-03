@@ -16,7 +16,7 @@ Performance 작업은 감각적 추측이 아니라 target platform, budget, rep
 3. Optimization 전 baseline capture를 남긴다.
 4. 변경 후 같은 scene/path/build condition에서 after capture를 남긴다.
 5. Gameplay behavior가 바뀌면 `game-playtesting-and-validation` evidence도 요구한다.
-6. `docs/game/11-performance-budgets.md`와 필요 시 `docs/game/12-build-release-platforms.md`를 갱신한다.
+6. `docs/game/05-validation-release.md`를 갱신한다.
 
 ## Verification
 

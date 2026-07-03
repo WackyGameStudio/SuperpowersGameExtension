@@ -1,16 +1,13 @@
-# 게임 변경 로그
+# Change Log
 
-## 기록 형식
+Record player-facing or spec-level game changes. Do not record internal refactors, file moves, formatting-only edits, or implementation details that do not change the game contract.
 
-```text
-날짜:
-변경 사항:
-플레이어에게 미치는 영향:
-영향받는 시스템 또는 콘텐츠:
-검증:
-문서 갱신:
-```
+## Entries
 
-## 변경 사항
+| Date | Change | Player or spec impact | Validation evidence |
+|---|---|---|---|
+| 아직 기록되지 않음 | 아직 기록되지 않음 | 아직 기록되지 않음 | 아직 기록되지 않음 |
 
-아직 게임에 의미 있는 변경 사항이 기록되지 않았습니다.
+## Recording criteria
+
+Add an entry for gameplay behavior changes, content/spec-level changes, save/network/platform compatibility changes, and changes linked to validation evidence.

@@ -1,6 +1,8 @@
 # superpowers-game-extension
 
-`superpowers-game-extension` is a repo-local extension that adds game development context to `Superpowers`.
+`superpowers-game-extension` is a repo-local extension that adds game development context to [`Superpowers`](https://github.com/obra/superpowers).
+
+`Superpowers` is a workflow that helps AI coding agents follow development practices such as brainstorming, planning, TDD, code review, and verification through composable skills. This extension keeps that workflow intact and adds Unity/Unreal-specific editor checks, safety rules, and game documentation conventions.
 
 This repository does not modify the global `obra/superpowers` workflow. Instead, it installs `AGENTS.md`, `.agents/skills`, and `docs/game` templates into a Unity or Unreal game project so an AI agent can follow game-specific documentation, engine checks, and verification practices inside the normal `Superpowers` flow.
 
@@ -78,7 +80,7 @@ The installer creates these files and directories in the target game project.
 |---|---|
 | `AGENTS.md` | Identifies the repository as a game project and guides local game skill selection across Superpowers stages. |
 | `.agents/skills/` | Local skills for Unity/Unreal, scene/UI, assets, performance, save data, input/camera, AI, networking, and localization/accessibility work. |
-| `docs/game/` | Living docs templates for game design, systems, scenes, UI flow, asset policy, architecture, save model, QA, performance, and release constraints. |
+| `docs/game/` | Living docs templates centered on 6 core documents and 2 logs, small enough for compact projects and expandable through split criteria. |
 
 The AI installation flow is non-destructive by default. If the target project already has `.agents/skills` or `docs/game` files at the same paths, the agent should report conflicts instead of overwriting them. This extension repository's own root does not contain `.agents/` or `AGENTS.md`; that root safety constraint prevents local skills under development from being auto-loaded into the current Codex session.
 With the `INSTALL_FOR_AI.md` flow, `AGENTS.md` is the only append-only special case. `.agents/skills` and `docs/game` should not be overwritten; the AI agent should copy only missing files or report conflicts.
@@ -113,25 +115,20 @@ When MCPForUnity is installed in a Unity project, it creates `.codex/skills/unit
 
 ## Living Docs
 
-`docs/game` is a living docs set for people and AI agents to share. When game rules, UX flow, scene structure, system architecture, engine integration, QA, performance budgets, or release constraints change, the related docs should be updated in the same task.
+`docs/game` is a compact source of truth for people and AI agents to share. The default template creates only 6 core documents and 2 logs so small single-player games can keep the docs current. Large multiplayer, live service, or content-heavy projects expand into subdocuments only through the split criteria in `00-index.md`.
 
-The default document map is:
+Default document map:
 
-- `00-index.md`: project identity, document map, current validation status
-- `01-vision-and-pillars.md`: target experience, design pillars, non-goals
-- `02-core-loop.md`: core loop, session loop, reward loop
-- `03-player-and-controls.md`: player verbs, input mapping, camera state, accessibility controls
-- `04-gameplay-systems.md`: combat, AI, progression, multiplayer authority, validation path
-- `05-scenes-and-levels.md`: scenes, levels, maps, transitions
-- `06-ui-ux-flow.md`: HUD, menus, modal stack, routing, focus behavior
-- `07-content-and-assets.md`: asset taxonomy, naming, source/generated policy, reference integrity
-- `08-technical-architecture.md`: runtime modules, editor tools, engine integration
-- `09-data-and-save-model.md`: save schema, migrations, compatibility, save/load validation
-- `10-playtest-and-qa.md`: smoke tests, bug reproduction, validation evidence
-- `11-performance-budgets.md`: target platform, frame/memory/loading budgets, measurement results
-- `12-build-release-platforms.md`: build scenes/maps, packaging constraints, pre-release checks
+- `00-index.md`: project identity, docs profile, document map, latest validation status
+- `01-product-brief.md`: one-line pitch, target experience, pillars, scope/non-goals, target player/platform, risks/open questions
+- `02-gameplay-design.md`: core/session/reward loop, player verbs, controls/camera, gameplay systems, validation path
+- `03-content-and-ux.md`: scenes/levels, UI flow, content/assets, localization/accessibility, reference integrity
+- `04-engine-architecture.md`: runtime modules, editor tools, engine integration, data ownership, save/network summary
+- `05-validation-release.md`: smoke tests, playtest evidence, performance budgets, build/release targets
 - `decision-log.md`: important decisions and trade-offs
-- `change-log.md`: game-meaningful changes
+- `change-log.md`: player-facing or spec-level changes
+
+Do not create new docs by default. Split into `systems/`, `content/`, `ux/`, `architecture/`, `online/`, `validation/`, `platform/`, or `decisions/` only when a section grows large, has a separate owner/QA path, or covers high-risk save/network/platform/liveops work.
 
 ## Included game skills
 
@@ -139,20 +136,21 @@ The installed `.agents/skills` cover these game domains.
 
 | Skill | Applies to |
 |---|---|
-| `game-docs-maintaining` | design, gameplay rules, scenes, UI flow, content, architecture, save data, testing, performance, build targets, project documentation |
+| `game-docs-maintaining` | design, gameplay behavior, content, UI/UX, architecture, save/network data, validation, performance, build targets, release constraints, project documentation |
 | `game-engine-mcp-operating` | Unreal/Unity MCP connections, editor tools, engine-owned assets, scene inspection, editor state validation |
 | `unity-mcp-workflow` | Unity MCP, Unity Editor automation, scenes, GameObjects, prefabs, ScriptableObjects, uGUI, UI Toolkit, Play Mode, Edit Mode tests |
 | `unreal-mcp-workflow` | Unreal MCP, Unreal Editor automation, levels, actors, Blueprints, UMG, CommonUI, materials, PIE, Automation tests |
-| `game-scene-ui-iteration` | levels, scenes, actors, GameObjects, prefabs, widgets, canvases, UIDocuments, menus, HUDs, visual hierarchy |
+| `game-scene-ui-iteration` | levels, scenes, maps, actors, GameObjects, prefabs, world objects, spawn points, lighting, collision, navigation, visual hierarchy |
 | `game-playtesting-and-validation` | gameplay verification, bug reproduction, Unity tests, Unreal Automation tests, smoke tests, editor log checks |
-| `game-ui-implementation` | HUDs, menus, UI Toolkit, uGUI, UMG, CommonUI, navigation, focus, runtime UI binding |
-| `game-asset-pipeline` | import settings, materials, textures, meshes, audio, prefabs, Blueprints, ScriptableObjects, asset naming/folders |
+| `game-ui-implementation` | HUDs, menus, UI screens, modal flow, UI state ownership, runtime UI binding, focus/navigation, input mode, uGUI, UI Toolkit, UMG, CommonUI |
+| `game-asset-pipeline` | asset import settings, materials, textures, meshes, audio, prefabs, Blueprints, ScriptableObjects, naming, folder taxonomy, source/generated policy, reference integrity |
 | `game-performance-budgeting` | FPS, frame time, hitches, memory, draw calls, shader cost, loading time, build size, profiling |
 | `game-save-data-migrations` | save schema, persistence format, progression data, migrations, backward compatibility, save/load tests |
 | `game-input-and-camera-design` | player controls, input mapping, Unity Input System, Unreal Enhanced Input, camera states, aiming, lock-on |
 | `game-ai-behavior-debugging` | Behavior Trees, state machines, NavMesh, pathfinding, perception, blackboards, spawn logic |
 | `game-networking-authority` | multiplayer authority, ownership, replication, prediction, rollback, matchmaking, deterministic tests |
-| `game-content-branching-and-merging` | binary engine assets, asset locks, prefab/Blueprint conflicts, Unreal OFPA, Unity YAML conflicts |
+| `game-content-branching-and-merging` | engine asset conflicts, binary asset locks, Unity YAML conflicts, prefab/Blueprint merge issues, Unreal OFPA changes, generated file churn, content branch strategy |
+| `game-build-release-platforms` | build scenes/maps, packaging, platform targets, CI build scripts, store submission, release checklist, platform-specific configuration, certification constraints |
 | `game-localization-accessibility` | localization keys, translated text, font fallback, subtitles, readability, colorblind support, input accessibility, safe areas |
 
 ## Developer notes

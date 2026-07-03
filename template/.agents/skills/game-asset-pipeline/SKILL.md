@@ -1,6 +1,6 @@
 ---
 name: game-asset-pipeline
-description: Use when changing import settings, materials, textures, meshes, audio, prefabs, Blueprints, ScriptableObjects, asset naming, folders, or source/generated asset policy.
+description: Use when changing asset import settings, materials, textures, meshes, audio, prefabs, Blueprints, ScriptableObjects, naming, folder taxonomy, source/generated policy, or reference integrity.
 ---
 
 # Game Asset Pipeline
@@ -16,7 +16,7 @@ Asset import settings, naming, folders, references, source/generated policy는 r
 3. Unity prefab/ScriptableObject와 Unreal Blueprint/Data Asset의 editor-owned 변경 경계를 명확히 한다.
 4. Binary asset 변경은 direct edit가 아니라 editor/MCP/tooling path를 우선한다.
 5. Branch, merge, lock 문제로 번지면 `game-content-branching-and-merging`을 함께 사용한다.
-6. 변경 후 `docs/game/07-content-and-assets.md` 갱신 여부를 판단한다.
+6. 변경 후 `docs/game/03-content-and-ux.md` 갱신 여부를 판단한다.
 
 ## Verification
 

@@ -40,6 +40,20 @@ template/
   docs/game/
 ```
 
+The expected default `docs/game/` payload is:
+
+```text
+docs/game/
+  00-index.md
+  01-product-brief.md
+  02-gameplay-design.md
+  03-content-and-ux.md
+  04-engine-architecture.md
+  05-validation-release.md
+  decision-log.md
+  change-log.md
+```
+
 ## Install Rules
 
 ### 1. `AGENTS.md`
@@ -55,7 +69,7 @@ Rules:
 - If `AGENTS.md` does not exist, copy `template/AGENTS.md` to the target root.
 - If `AGENTS.md` exists but is empty or whitespace-only, replace it with `template/AGENTS.md`.
 - If `AGENTS.md` exists and has content, append the full contents of `template/AGENTS.md` below the existing content.
-- Before appending, check whether the existing file already contains `Superpowers 단계별 game skill routing` or `superpowers-game-extension`. If it does, do not append a duplicate block; report that the instructions appear to be installed already.
+- Before appending, check whether the existing file already contains `<!-- superpowers-game-extension: game-project-instructions -->`, `# superpowers-game-extension`, or `## Game skill routing`. If it does, do not append a duplicate block; report that the instructions appear to be installed already.
 - When appending, insert a clear separator:
 
 ```md
@@ -95,6 +109,7 @@ Rules:
 
 - If `docs/game/` does not exist, copy `template/docs/game/` there.
 - If `docs/game/` exists, copy only missing template files.
+- If the target already has older docs such as `01-vision-and-pillars.md` or `12-build-release-platforms.md`, do not delete or migrate them automatically. Report them as existing project docs and copy only missing current template files.
 - Do not overwrite existing game docs.
 - If a template file already exists with the same name, leave it unchanged and report it as already present.
 
@@ -104,7 +119,7 @@ After installing, verify:
 
 - `<target-game-project>/AGENTS.md` exists and includes the game extension instructions.
 - `<target-game-project>/.agents/skills/` exists and includes the copied game skills or reported conflicts.
-- `<target-game-project>/docs/game/00-index.md` exists or was reported as already present.
+- `<target-game-project>/docs/game/00-index.md` and the current core docs exist or were reported as already present.
 - No existing project file was overwritten without explicit user approval.
 
 Report a short summary:

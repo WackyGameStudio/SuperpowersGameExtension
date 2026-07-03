@@ -1,6 +1,6 @@
 ---
 name: game-content-branching-and-merging
-description: Use when working with binary engine assets, asset locks, prefab or Blueprint merge conflicts, Unreal OFPA, Unity YAML conflicts, source control layout, or content branch strategy.
+description: Use when resolving engine asset conflicts, binary asset locks, Unity YAML conflicts, prefab or Blueprint merge issues, Unreal OFPA changes, generated file churn, or content branch strategy.
 ---
 
 # Game Content Branching and Merging
@@ -15,7 +15,7 @@ Binary engine assets와 text-serialized assets는 collaboration risk가 다르�
 2. Locking, branch strategy, merge ownership, generated files exclusion을 확인한다.
 3. Unity `.meta`와 Unreal redirector/OFPA 같은 engine-specific collaboration 문제를 다룬다.
 4. Import setting policy가 핵심이면 `game-asset-pipeline`을 함께 사용한다.
-5. 변경 후 `docs/game/07-content-and-assets.md`와 필요 시 `decision-log.md` 갱신을 유도한다.
+5. 변경 후 `docs/game/03-content-and-ux.md`와 필요 시 `decision-log.md` 갱신을 유도한다.
 
 ## Verification
 
