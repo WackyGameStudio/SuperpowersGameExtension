@@ -6,28 +6,58 @@
 - 엔진: 아직 감지되지 않음
 - 주요 플랫폼: 아직 기록되지 않음
 - 현재 마일스톤: 아직 기록되지 않음
+- docs_profile: `standard`
 
-## 문서 맵
+## 핵심 문서 맵
 
-- `01-vision-and-pillars.md`: 목표 경험, 설계 원칙, 비목표
-- `02-core-loop.md`: 코어 루프, 세션 루프, 보상 루프
-- `03-player-and-controls.md`: 플레이어 동사, 입력 매핑, 카메라 상태, 접근성 조작
-- `04-gameplay-systems.md`: 전투, AI, 진행, 멀티플레이어 권한 모델, 시스템 검증 경로
-- `05-scenes-and-levels.md`: 씬, 레벨, 맵, 전환 목록
-- `06-ui-ux-flow.md`: HUD, 메뉴, 모달 스택, 라우팅 및 포커스 동작
-- `07-content-and-assets.md`: 에셋 분류, 명명 규칙, source/generated 정책, 참조 무결성
-- `08-technical-architecture.md`: 런타임 모듈, 에디터 도구, 엔진 통합
-- `09-data-and-save-model.md`: 저장 스키마, 마이그레이션, 호환성, 저장/로드 검증
-- `10-playtest-and-qa.md`: 스모크 테스트, 버그 재현, 검증 증거
-- `11-performance-budgets.md`: 대상 플랫폼, frame/memory/loading 예산, 측정 경로와 결과
-- `12-build-release-platforms.md`: 대상 플랫폼, build scenes/maps, 패키징 제약, 출시 전 검증
-- `decision-log.md`: 중요한 의사결정과 트레이드오프
-- `change-log.md`: 에이전트 또는 개발자가 남긴 게임 의미의 변경 사항
+`docs/game/`는 사람과 AI agent가 함께 보는 compact source of truth입니다. 기본 설치 문서는 6개 핵심 문서와 2개 로그만 유지합니다.
 
-## 현재 검증 상태
+- `01-product-brief.md`: 비전, pillars, scope/non-goals, target player/platform, risks/open questions, core loop 요약
+- `02-gameplay-design.md`: core/session/reward loop, player verbs, controls/camera, gameplay systems, validation path
+- `03-content-and-ux.md`: scenes/levels, UI flow, content/assets, localization/accessibility, reference integrity
+- `04-engine-architecture.md`: engine integration, runtime modules, editor tools, data ownership, save/network summary
+- `05-validation-release.md`: smoke tests, playtest evidence, performance budgets, build/release targets
+- `decision-log.md`: 중요한 결정과 trade-off
+- `change-log.md`: player-facing 또는 spec-level 변경
 
-아직 검증 증거가 기록되지 않았습니다.
+## Docs profile
 
-## 유지보수 메모
+- `compact`: prototype 또는 소규모 solo/single-player 프로젝트. 하위 문서를 만들지 않고 core docs만 유지합니다.
+- `standard`: 기본값. 6개 핵심 문서와 2개 로그를 유지하고 split criteria를 만족할 때만 분리합니다.
+- `expanded`: 대규모 multiplayer, live service, 대량 content, 또는 platform-heavy 프로젝트. `00-index.md`에 등록된 하위 문서를 함께 유지합니다.
 
-문서가 추가, 삭제, 이름 변경되거나 엔진, 플랫폼 대상, 마일스톤이 바뀌면 이 색인을 갱신합니다.
+## Optional expansion directories
+
+새 문서는 기본적으로 만들지 않습니다. 아래 디렉터리는 split criteria를 만족할 때만 생성하고 이 색인에 등록합니다.
+
+```text
+systems/
+content/
+ux/
+architecture/
+online/
+validation/
+platform/
+decisions/
+```
+
+## Split criteria
+
+다음 중 하나 이상이 맞을 때만 핵심 문서의 세부 내용을 하위 문서로 분리합니다.
+
+- 기존 섹션이 약 150-200줄 이상으로 커짐
+- 별도 owner/reviewer 또는 별도 QA matrix가 있음
+- save migration, networking, platform release, live ops, privacy, performance budget처럼 실패 비용이 큼
+- PR 충돌이나 반복 논쟁이 잦음
+- 별도 validation evidence ledger가 필요함
+
+분리할 때는 핵심 문서에 짧은 요약과 링크를 남기고, 새 파일을 이 색인에 등록합니다.
+
+## 최신 검증 상태
+
+- Last verified: 아직 검증 증거가 기록되지 않음
+- Evidence pointer: 아직 기록되지 않음
+
+## 유지보수 원칙
+
+게임 규칙, UX flow, scene/content, architecture, save/network compatibility, performance budget, build/release target, validation strategy가 바뀌면 같은 작업에서 관련 문서를 갱신하거나 갱신하지 않는 이유를 남깁니다.
