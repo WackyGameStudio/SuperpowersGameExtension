@@ -14,7 +14,7 @@ Multiplayer 변경은 one-client success로 완료되지 않는다. Authority, o
 1. Authority model, ownership, replication boundary, client prediction, reconciliation을 명확히 한다.
 2. Single-player code path와 multiplayer code path의 divergence를 추적한다.
 3. Network state가 gameplay, UI, save/progression에 주는 영향을 확인한다.
-4. 변경 후 `docs/game/04-gameplay-systems.md`와 필요 시 `docs/game/08-technical-architecture.md` 갱신을 유도한다.
+4. 변경 후 `docs/game/02-gameplay-design.md`와 필요 시 `docs/game/04-engine-architecture.md` 갱신을 유도한다.
 
 ## Verification
 

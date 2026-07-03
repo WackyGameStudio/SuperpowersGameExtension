@@ -21,7 +21,7 @@ Unreal MCP 작업은 Unreal Editor 안의 MCP server와 Toolset Registry를 loca
 8. `call_tool`은 한 번에 하나씩 순차 실행한다.
 9. Level, Actor, Material, Blueprint, Widget 변경 전에는 mutating operation gate를 통과한다.
 10. 변경 후 save/compile/PIE/log/test 중 필요한 검증을 수행한다.
-11. Scene/UI 영향은 `docs/game/05-scenes-and-levels.md` 또는 `docs/game/06-ui-ux-flow.md`와 맞춘다.
+11. Scene/UI 영향은 `docs/game/03-content-and-ux.md`와 맞춘다.
 
 ## Tool Search Mode
 

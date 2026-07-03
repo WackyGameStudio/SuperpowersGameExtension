@@ -22,7 +22,7 @@ MCPForUnity를 설치하고 설정한 Unity 프로젝트에는 `.codex/skills/un
 7. 기본 tool group 외에는 작업에 필요한 group만 `manage_tools`로 활성화한다.
 8. Scene, GameObject, Prefab, Material, ScriptableObject, UI 변경 후 `refresh_unity`를 수행한다.
 9. Console read, Edit Mode test, Play Mode test, scene validation 중 필요한 검증을 수행한다.
-10. Scene/UI 영향은 `docs/game/05-scenes-and-levels.md` 또는 `docs/game/06-ui-ux-flow.md`와 맞춘다.
+10. Scene/UI 영향은 `docs/game/03-content-and-ux.md`와 맞춘다.
 
 ## Verification
 

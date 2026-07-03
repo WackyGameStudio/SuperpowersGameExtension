@@ -1,6 +1,6 @@
 ---
 name: game-scene-ui-iteration
-description: Use when modifying levels, scenes, actors, GameObjects, prefabs, widgets, canvases, UIDocuments, menus, HUDs, or visual hierarchy in a game engine.
+description: Use when modifying levels, scenes, maps, actors, GameObjects, prefabs, world objects, spawn points, lighting, collision, navigation, or visual hierarchy in an engine editor.
 ---
 
 # Game Scene UI Iteration
@@ -17,7 +17,7 @@ Scene, level, prefab, actor, GameObject, widget, canvas, UIDocument, HUD, menu �
 4. 가능한 경우 duplicate scene, level, prefab에서 실험한다.
 5. Engine editor surface나 MCP를 사용해 작은 단위로 수정한다.
 6. 변경 후 hierarchy snapshot, screenshot, console/log, scene validation 중 가능한 검증을 수행한다.
-7. `docs/game/05-scenes-and-levels.md` 또는 `docs/game/06-ui-ux-flow.md` 갱신 여부를 판단한다.
+7. `docs/game/03-content-and-ux.md` 갱신 여부를 판단한다.
 8. Unity scene/UI snapshot은 `.codex/skills/unity-mcp-skill/SKILL.md`의 `unity-mcp-orchestrator`가 정의한 resource-first 흐름으로 확보한다. 구체적인 MCPForUnity resource/tool 선택과 수집 순서는 local skill pack에 위임한다.
 9. HUD/menu/widget/canvas/UIDocument 변경이 visual hierarchy 이상으로 runtime binding, focus/navigation, input mode, screen flow를 바꾸면 `game-ui-implementation`을 함께 사용한다.
 

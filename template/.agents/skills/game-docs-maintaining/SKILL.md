@@ -1,32 +1,60 @@
 ---
 name: game-docs-maintaining
-description: Use when a game task affects design, gameplay rules, scenes, UI flow, content, architecture, save data, testing, performance, build targets, or project documentation.
+description: Use when changing game design, gameplay behavior, content, UI/UX, engine architecture, save/network data, validation, performance, build targets, release constraints, or docs/game files.
 ---
 
 # Game Docs Maintaining
 
 ## Overview
 
-게임 프로젝트의 코드, scene, UI, content, validation 상태가 `docs/game/`와 어긋나지 않도록 유지한다.
+`docs/game/` is the compact source of truth for the game. Keep it accurate, searchable, and small enough to maintain. Prefer updating an existing core document over creating a new document.
+
+## Core documents
+
+Default docs:
+
+- `00-index.md`
+- `01-product-brief.md`
+- `02-gameplay-design.md`
+- `03-content-and-ux.md`
+- `04-engine-architecture.md`
+- `05-validation-release.md`
+- `decision-log.md`
+- `change-log.md`
 
 ## Workflow
 
-1. `docs/game/00-index.md`를 먼저 읽는다.
-2. 작업 영향 범위에 맞는 `docs/game` 문서를 추가로 읽는다.
-3. 현재 코드나 editor 상태가 문서와 다르면 stale 상태를 사용자에게 알린다.
-4. 변경 계획이나 구현 결과가 game rules, UX flow, scene structure, architecture, validation strategy에 영향을 주는지 판단한다.
-5. 영향이 있으면 관련 문서와 `change-log.md`를 같은 작업에서 갱신한다.
-6. 중요한 trade-off가 있으면 `decision-log.md`에 날짜, 결정, 선택지, 이유, 영향을 남긴다.
-7. `brainstorming` 중 game design, UI, scene, asset, save, performance, input, AI, networking, accessibility 영향이 있으면 `docs/game/00-index.md`와 관련 docs를 먼저 확인한다.
-8. `writing-plans` 중 docs update, `change-log.md`, `decision-log.md` 작업을 계획에 포함한다.
-9. `executing-plans` 또는 `subagent-driven-development` 중 game behavior나 engine content 변경 후 docs 갱신 필요 여부를 확인한다.
-10. Code review에서는 docs drift, stale index, missing validation evidence, missing change-log를 risk로 본다.
-11. `verification-before-completion`에서는 docs updated 또는 no-op reason을 확인한다.
-12. `finishing-a-development-branch`에서는 docs map, change-log, decision-log, 신규 docs template 포함 여부를 확인한다.
+1. Read `docs/game/00-index.md` first.
+2. Identify which core document owns the changed game fact.
+3. Read only the relevant core document and any expanded doc linked from the index.
+4. If code/editor state and docs disagree, report the stale area before changing docs.
+5. Update the smallest relevant section.
+6. Update `decision-log.md` only for durable trade-offs or decisions likely to be debated again.
+7. Update `change-log.md` only for player-facing or spec-level changes.
+8. Do not create a new docs file unless the split criteria below are met.
+9. If no docs update is needed, record the no-op reason in the final response.
+
+## Split criteria
+
+Create a new `docs/game` file only when at least one is true:
+
+- The section is larger than about 150-200 lines.
+- It has a separate owner/reviewer or QA matrix.
+- It covers high-risk compatibility: save migration, networking, platform release, live ops, privacy, performance budget.
+- It causes repeated PR conflicts or repeated design debates.
+- It needs its own validation evidence ledger.
+
+When splitting:
+
+1. Move details to a focused file under `systems/`, `content/`, `ux/`, `architecture/`, `online/`, `validation/`, `platform/`, or `decisions/`.
+2. Leave a short summary and link in the core document.
+3. Register the new file in `00-index.md`.
+4. Preserve old information unless explicitly superseded.
 
 ## Verification
 
-- `docs/game/00-index.md`의 문서 지도가 실제 파일 목록과 맞는지 확인한다.
-- 변경된 gameplay, scene, UI, architecture, validation 내용이 관련 문서에 반영됐는지 확인한다.
-- Mermaid는 flow, state, transition이 prose보다 명확할 때만 사용한다.
-- 문서 갱신이 필요 없다고 판단한 경우, 최종 응답에 그 이유를 짧게 남긴다.
+- `00-index.md` matches actual docs files.
+- Updated docs identify current status, owner if known, and last verified evidence if relevant.
+- Markdown uses real line breaks and renderable headings/tables.
+- No duplicate source of truth was created.
+- Final response says which docs changed or why docs were not changed.

@@ -1,6 +1,6 @@
 ---
 name: game-ui-implementation
-description: Use when implementing or changing HUDs, menus, UI Toolkit, uGUI, UMG, CommonUI, UI navigation, focus behavior, or runtime UI binding in a game.
+description: Use when changing HUDs, menus, UI screens, modal flow, UI state ownership, runtime UI binding, focus/navigation, input mode, uGUI, UI Toolkit, UMG, or CommonUI.
 ---
 
 # Game UI Implementation
@@ -16,7 +16,7 @@ HUD, menu, runtime UI binding, focus/navigation, input mode 변경은 player-fac
 3. UI state와 gameplay state의 ownership을 분리해 missing reference, stale data, lifecycle timing risk를 줄인다.
 4. UI hierarchy나 scene object 변경이 있으면 `game-scene-ui-iteration`을 함께 사용한다.
 5. Localization, font, safe area, readability 영향이 있으면 `game-localization-accessibility`를 함께 사용한다.
-6. 변경 후 `docs/game/06-ui-ux-flow.md` 갱신 여부를 판단한다.
+6. 변경 후 `docs/game/03-content-and-ux.md` 갱신 여부를 판단한다.
 
 ## Verification
 

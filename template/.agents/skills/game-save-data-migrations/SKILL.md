@@ -14,7 +14,7 @@ Save schema와 migration 변경은 player data loss risk가 크다. Runtime data
 1. Save schema 변경과 runtime data model 변경을 구분한다.
 2. Version tagging, backward compatibility, migration path, corrupt save handling을 확인한다.
 3. Migration은 player data loss risk가 있으므로 `docs/game/decision-log.md` 기록 후보로 본다.
-4. Save model 변경 후 `docs/game/09-data-and-save-model.md` 갱신을 유도한다.
+4. Save model 변경 후 `docs/game/04-engine-architecture.md` 갱신을 유도한다.
 
 ## Verification
 

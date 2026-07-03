@@ -15,7 +15,7 @@ AI behavior 변경은 expected decision, state, perception, navigation, target s
 2. Unity NavMesh/Animator/state machine 또는 Unreal Behavior Tree/Blackboard/EQS 같은 surface를 식별한다.
 3. Repro scene/path와 expected decision을 문서화한다.
 4. Spawn/despawn, stuck behavior, target switching 같은 edge behavior를 함께 확인한다.
-5. 변경 후 `docs/game/04-gameplay-systems.md` 갱신을 유도한다.
+5. 변경 후 `docs/game/02-gameplay-design.md` 갱신을 유도한다.
 
 ## Verification
 

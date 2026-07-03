@@ -15,7 +15,7 @@ Compile 성공은 game behavior 검증이 아니다. Gameplay, scene, UI, conten
 2. Unity Edit Mode, Unity Play Mode, Unreal Automation, Unreal Functional Test, smoke test, manual playtest 중 맞는 검증 레벨을 선택한다.
 3. 실패를 먼저 재현할 수 있으면 failing validation을 기록한다.
 4. 수정 후 같은 path로 passing validation을 기록한다.
-5. Command, environment, scene/map, log excerpt, pass/fail을 `docs/game/10-playtest-and-qa.md`에 남길지 판단한다.
+5. Command, environment, scene/map, log excerpt, pass/fail을 `docs/game/05-validation-release.md`에 남길지 판단한다.
 6. Unity script/test 검증은 `.codex/skills/unity-mcp-skill/SKILL.md`의 `unity-mcp-orchestrator`가 정의한 compile, console, test 확인 순서를 따른다.
 7. Performance budget, save migration, networking authority, localization/accessibility처럼 domain-specific evidence가 필요한 작업은 해당 domain skill의 Verification을 함께 적용한다.
 

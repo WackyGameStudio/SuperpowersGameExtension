@@ -15,7 +15,7 @@ Player controls와 camera behavior는 player verbs, UI prompts, accessibility, m
 2. Input latency, deadzone, invert axis, sensitivity, accessibility 영향을 확인한다.
 3. Camera movement, aim, lock-on, obstruction, clipping, motion sickness risk를 함께 본다.
 4. UI focus/navigation이나 prompts가 바뀌면 `game-ui-implementation`을 함께 사용한다.
-5. 변경 후 `docs/game/03-player-and-controls.md` 갱신을 유도한다.
+5. 변경 후 `docs/game/02-gameplay-design.md` 갱신을 유도한다.
 
 ## Verification
 
