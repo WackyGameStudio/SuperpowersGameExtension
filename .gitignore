@@ -1,3 +1,5 @@
+# Local development and validation artifacts.
+# Public extension files are the root docs/setup guides and template/.
 /.dev/
 /.venv/
 /venv/

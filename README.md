@@ -157,4 +157,6 @@ Unity 프로젝트에서 MCPForUnity를 설치하면 `.codex/skills/unity-mcp-sk
 
 이 extension repo 자체의 루트에는 `.agents/`와 `AGENTS.md`를 만들지 않습니다. 설치 payload는 항상 `template/` 아래에서 관리합니다. 이 제약은 extension을 개발하는 Codex 세션이 아직 검증 중인 local skill을 자동 로드하지 않게 하기 위한 것입니다.
 
+공개 repo의 추적 대상은 루트 문서, MCP setup guide, `template/`입니다. `/docs`, `/scripts`, `/tests`, `/pyproject.toml`은 local validation과 개발 산출물로 취급해 `.gitignore`에 둡니다. 기본 설치 흐름은 Python installer script가 아니라 [INSTALL_FOR_AI.md](INSTALL_FOR_AI.md)를 AI coding agent에게 읽혀 `template/`을 비파괴 복사하게 하는 방식입니다.
+
 Codex plugin packaging은 아직 일반 설치 흐름이 아닙니다. 현재 기본 사용 경로는 `INSTALL_FOR_AI.md`를 AI coding agent에게 읽게 해서 대상 게임 프로젝트에 repo-local `AGENTS.md`, `.agents/skills`, `docs/game`를 설치하는 방식입니다.

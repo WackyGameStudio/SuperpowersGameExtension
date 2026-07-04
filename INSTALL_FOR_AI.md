@@ -18,6 +18,8 @@ Install the contents of this repository's `template/` directory into the target 
 
 The install must be non-destructive. Preserve existing project files unless this document explicitly says to append.
 
+There is no required installer script for this repository. Use normal filesystem operations to copy from `template/`, inspect existing target files, and report conflicts.
+
 ## Required Inputs
 
 Before changing files, identify:
@@ -39,6 +41,8 @@ template/
   .agents/skills/
   docs/game/
 ```
+
+Do not use local development artifacts such as `/scripts`, `/tests`, `/docs/superpowers`, or `/pyproject.toml` as install inputs if they exist in a working checkout. They are not part of the target project payload.
 
 The expected default `docs/game/` payload is:
 
